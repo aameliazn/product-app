@@ -35,9 +35,16 @@
                         <td class="align-middle">{{ $item->desc }}</td>
                         <td class="align-middle">
                             <div class="btn-group" role="gridcell" aria-label="Basic Example">
-                                <a href="" type="button" class="btn btn-secondary">Detail</a>
-                                <a href="" type="button" class="btn btn-warning">Edit</a>
-                                <button class="btn btn-danger m-0">Delete</button>
+                                <a href="{{ route('products.show', $item->id) }}" type="button"
+                                    class="btn btn-secondary">Detail</a>
+                                <a href="{{ route('products.edit', $item->id) }}" type="button"
+                                    class="btn btn-warning">Edit</a>
+                                <form action="{{ route('products.destroy', $item->id) }}" method="POST" type="button"
+                                    class="btn btn-danger">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger m-0">Delete</button>
+                                </form>
                             </div>
                         </td>
                     </tr>
